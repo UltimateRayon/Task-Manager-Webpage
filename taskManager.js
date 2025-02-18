@@ -5,9 +5,9 @@ function addTask(title, description, priority)
     this.taskPriority=priority;
 }
 
-addEventListener("submit", (e) => {
+document.querySelector("#taskForm").addEventListener("submit", (e) => {
     e.preventDefault();
-
+    console.log('clicked')
     let newt=document.querySelector("#taskTitle").value;
     let newd=document.querySelector("#taskDescription").value;
     let newp=document.querySelector("#taskPriority").value;
@@ -23,9 +23,12 @@ addEventListener("submit", (e) => {
 
     let list=document.querySelector("#taskList");
     list.innerHTML+="<p><b>"+newTask.taskTitle+"</b><br>"+newTask.taskDescription+"<br>"+newTask.taskPriority+"<br><button>Delete</button>&nbsp<button>Update</button>&nbsp<button>Completed</button></p>"
-    let id=list.lastElementChild.id=Date.now();
-    // let test=document.getElementById(news);
-    // console.log(test.id);
-    let atype=list.lastElementChild.lastElementChild.type="click";
-    let aname=list.lastElementChild.lastElementChild.name=newTask.taskTitle;
+    // let id=list.lastElementChild.id=Date.now();
+    list.lastElementChild.setAttribute("type", "click")
+    list.lastElementChild.setAttribute("id", Date.now())
+})
+
+document.querySelector("#taskList").addEventListener("click", (e) =>{
+let listitem=document.querySelector("p");
+listitem.remove();
 })
